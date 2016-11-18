@@ -6,8 +6,8 @@ import com.datastax.driver.core.ResultSet;
 /**
  * Queries class  contains different queries to fetch data from the data store.
  */
-public class Queries {
-	
+public class Queries 
+{
 	static String query = null;
 	static String queryView = null;
 	static String queryFunction = null;
@@ -137,9 +137,9 @@ public class Queries {
 		List<String> firstCategory = new ArrayList();
 		String queryCategories = "SELECT categories FROM businessobjects";
 		ResultSet resultCategories = CassandraDBConnect.session.execute(queryCategories);
-        int count = 0;
+		int count = 0;
 		
-        while(resultCategories.iterator().hasNext())
+		while(resultCategories.iterator().hasNext())
 		{
 			categories.add(resultCategories.one().getList(0, String.class));			
 			System.out.println(categories.get(count));
@@ -174,8 +174,7 @@ public class Queries {
 		System.out.println("Result of firstCategoriesReviewCount:");
 		System.out.println(result.all());
 	}
-	
-	
+		
 	/**
 	 * Query 10: Businesses with cool rated reviews > 2000
 	 */
@@ -200,8 +199,7 @@ public class Queries {
 		System.out.println("" + result.all());
 		
 		result = CassandraDBConnect.session.execute(queryAggregate);
-		System.out.println("" + result.all());
-		
+		System.out.println("" + result.all());		
 	}
 	
 	/**
@@ -219,8 +217,7 @@ public class Queries {
 		
 		result = CassandraDBConnect.session.execute(query);
 		System.out.println("Result of viewUserObjects:");
-
-		
+	
 		while(result.iterator().hasNext())
 		{
 			System.out.println(result.one().toString());
