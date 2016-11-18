@@ -147,7 +147,7 @@ public class CassandraDBConnect {
 		useKeyspace("yelpkeys");
                 //createTables();
 		//readFile();
-		Queries.viewUserObjects();
+		CassandraQueries.viewUserObjects();
 		closeDB();		
 	}
 }
