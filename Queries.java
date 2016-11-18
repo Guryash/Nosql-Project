@@ -6,7 +6,7 @@ import com.datastax.driver.core.ResultSet;
 /**
  * Queries class  contains different queries to fetch data from the data store.
  */
-public class Queries 
+public class CassandraQueries 
 {
 	static String query = null;
 	static String queryView = null;
