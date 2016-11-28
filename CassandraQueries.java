@@ -158,9 +158,9 @@ public class CassandraQueries
 		List<String> firstCategory = new ArrayList<String>();
 		String queryCategories = "SELECT categories FROM businessobjects";
 		ResultSet resultCategories = CassandraDBConnect.session.execute(queryCategories);
-        int count = 0;
+        	int count = 0;
 		
-        while(resultCategories.iterator().hasNext())
+        	while(resultCategories.iterator().hasNext())
 		{
 			categories.add(resultCategories.one().getList(0, String.class));			
 			System.out.println(categories.get(count));
