@@ -10,7 +10,7 @@ public class HbaseBuildInputData
 	 * Defines row-key for each json object.
 	 * @param	line	is an array-list of string type which contains all the key-value pairs of the object
 	 * @param	type	defines the type of json object, whether it is user, or review, or business
-	 * @return			returns row-key
+	 * @return		returns row-key
 	 */
 	public static String getRowKeyForPutData(ArrayList<String> line, String type)
 	{
