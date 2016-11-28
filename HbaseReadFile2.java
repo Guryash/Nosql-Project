@@ -13,7 +13,7 @@ public class HbaseReadFile2
 	{
 		BufferedReader reader = null;
 		String line = null;
-        int count = 0;
+        	int count = 0;
 		try 
 		{
 		    File file = new File(filePath);
@@ -47,15 +47,15 @@ public class HbaseReadFile2
 		        			for (int i = 0; i < userTemp.length; i++)
 		        			{
 		        				while (!userTemp[i].contains(": "))
-		        			    {
+		        			    	{
 		        					loopCount++;
 		        					userTemp[i - 1] = userTemp[i - 1].concat(userTemp[i]).replace(",", "");
-			        			    for (int j = i; j < userTemp.length - 1; j++)
-			        			    { 
-			        			    	i++;
-			        				    userTemp[j] = userTemp[i];			        				
-			        			    }
-		        			    }
+			        			    	for (int j = i; j < userTemp.length - 1; j++)
+			        			    	{ 
+			        			    		i++;
+			        				    	userTemp[j] = userTemp[i];			        				
+			        			    	}
+		        			    	}
 		        			}
 		        			
 		        			if (userTemp.length - loopCount == 6)
@@ -207,18 +207,18 @@ public class HbaseReadFile2
 		}		
 		catch (IOException e) 
 		{
-		    e.printStackTrace();
+		    	e.printStackTrace();
 		} 
 		finally 
 		{
-		    try 
-		    {
-		        reader.close();
-		    } 
-		    catch (IOException e) 
-		    {
-		        e.printStackTrace();
-		    }
+			try 
+		    	{
+		        	reader.close();
+		    	} 
+		    	catch (IOException e) 
+		    	{
+		        	e.printStackTrace();
+		    	}
 		}
 	}
 }
