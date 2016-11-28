@@ -33,9 +33,9 @@ public class HbaseQueries {
 		
 		timer.start();
 		HTableDescriptor listTables[] = admin.listTables();
-	    timer.stop();
-	    System.out.println("\nTime elapsed to execute a query, listTables: " + timer.elapsedMillis() + " milliseconds.");
-	    timer.reset();
+	    	timer.stop();
+	    	System.out.println("\nTime elapsed to execute a query, listTables: " + timer.elapsedMillis() + " milliseconds.");
+	    	timer.reset();
 
 		System.out.println("Following are the tablespresent in the database:");
 		for (int i = 0; i < listTables.length; i++)
@@ -56,8 +56,8 @@ public class HbaseQueries {
 		timer.start();
 		HTableDescriptor listTablesMatchingExpression[] = admin.listTables("yelp.*");
 		timer.stop();
-	    System.out.println("\nTime elapsed to execute a query, listTablesMatchingExpression: " + timer.elapsedMillis() + " milliseconds.");
-	    timer.reset();
+	    	System.out.println("\nTime elapsed to execute a query, listTablesMatchingExpression: " + timer.elapsedMillis() + " milliseconds.");
+	    	timer.reset();
 
 		System.out.println("Following are the tables matched with expression yelp.*:");
 		for (int i = 0; i < listTablesMatchingExpression.length; i++)
@@ -85,10 +85,10 @@ public class HbaseQueries {
 			admin.disableTable(TableName.valueOf("yelpkeys"));
 			bDisable = admin.isTableDisabled(TableName.valueOf("yelpkeys"));
 			timer.stop();
-		    System.out.println("yelpkeys table is disabled: " + bDisable);
+		    	System.out.println("yelpkeys table is disabled: " + bDisable);
 		}
 		System.out.println("Time elapsed to execute a query, checkTableDisable: " + timer.elapsedMillis() + " milliseconds.");
-	    timer.reset();
+	    	timer.reset();
 	}
 	
 	/**
@@ -110,10 +110,10 @@ public class HbaseQueries {
 			admin.enableTable(TableName.valueOf("yelpkeys"));
 			bEnable = admin.isTableEnabled(TableName.valueOf("yelpkeys"));
 			timer.stop();
-		    System.out.println("yelpkeys table is enabled: " + bEnable);
+		    	System.out.println("yelpkeys table is enabled: " + bEnable);
 		}
 		System.out.println("Time elapsed to execute a query, checkTableEnable: " + timer.elapsedMillis() + " milliseconds.");
-	    timer.reset();
+	    	timer.reset();
 	}
 	
 	/**
@@ -136,9 +136,9 @@ public class HbaseQueries {
 		admin.disableTables("yel.*");
 		timer.stop();
 		System.out.println("Time elapsed to execute a query, disableTableMatchingExpression: " + timer.elapsedMillis() + " milliseconds.");
-	    timer.reset();
+	    	timer.reset();
 		
-	    System.out.println("Following tables are disabled:"); 
+	    	System.out.println("Following tables are disabled:"); 
 		for (int i = 0; i < listTablesMatchingExpression.length; i++)
 		{
 			System.out.println(listTablesMatchingExpression[i].getTableName() + ": " + admin.isTableDisabled(listTablesMatchingExpression[i].getTableName()));
@@ -165,7 +165,7 @@ public class HbaseQueries {
 		admin.enableTables("yel.*");
 		timer.stop();
 		System.out.println("Time elapsed to execute a query, disableTableMatchingExpression: " + timer.elapsedMillis() + " milliseconds.");
-	    timer.reset();
+	    	timer.reset();
 	    
 		System.out.println("Following tables are enabled:"); 
 		for (int i = 0; i < listTablesMatchingExpression.length; i++)
@@ -187,21 +187,21 @@ public class HbaseQueries {
 		timer.start();
 		ResultScanner scanner = table.getScanner(scan);
 		timer.stop();
-		 try 
-		 {
-			 int count = 1;
-			 for (Result rr = scanner.next(); rr != null; rr = scanner.next()) 
-			 {
-				 System.out.println("Found row " + count + ": " + rr);
-				 count++;
-	         }
-		 }
-		 finally 
-		 {
-			 scanner.close();
-			 System.out.println("Time elapsed to execute a query, scanTable: " + timer.elapsedMillis() + " milliseconds.");
-			 timer.reset();
-		 }
+		try 
+		{
+			int count = 1;
+			for (Result rr = scanner.next(); rr != null; rr = scanner.next()) 
+			{
+				System.out.println("Found row " + count + ": " + rr);
+				count++;
+	         	}
+		}
+		finally 
+		{
+			scanner.close();
+			System.out.println("Time elapsed to execute a query, scanTable: " + timer.elapsedMillis() + " milliseconds.");
+			timer.reset();
+		}
 	}
 	
 	/**
@@ -218,13 +218,13 @@ public class HbaseQueries {
 		
 		Get g = new Get(rowKey.getBytes());
 		timer.start();
-        Result result = table.get(g);
-        timer.stop();
-        System.out.println("Is the deleted row empty: " + result.isEmpty());
-        System.out.println(result);
-        System.out.println("Time elapsed to execute a query, getValue: " + timer.elapsedMillis() + " milliseconds.");
+        	Result result = table.get(g);
+        	timer.stop();
+        	System.out.println("Is the deleted row empty: " + result.isEmpty());
+        	System.out.println(result);
+        	System.out.println("Time elapsed to execute a query, getValue: " + timer.elapsedMillis() + " milliseconds.");
 		timer.reset();
-        System.out.println(Bytes.toString(result.getValue(columnFamily.getBytes(), qualifier.getBytes())));
+        	System.out.println(Bytes.toString(result.getValue(columnFamily.getBytes(), qualifier.getBytes())));
 	}
 	
 	/**
@@ -239,14 +239,14 @@ public class HbaseQueries {
 		
 		Delete del = new Delete(rowKey.getBytes());
 		timer.start();
-        table.delete(del);
-        timer.stop();
-        System.out.println("Time elapsed to execute a query, deleteRow: " + timer.elapsedMillis() + " milliseconds.");
+        	table.delete(del);
+        	timer.stop();
+        	System.out.println("Time elapsed to execute a query, deleteRow: " + timer.elapsedMillis() + " milliseconds.");
   		timer.reset();
   		
-        Get g = new Get(rowKey.getBytes());
-        Result result = table.get(g);
-        System.out.println("Is the deleted row empty: " + result.isEmpty());
+        	Get g = new Get(rowKey.getBytes());
+        	Result result = table.get(g);
+        	System.out.println("Is the deleted row empty: " + result.isEmpty());
 	}
 	
 	/**
@@ -266,16 +266,16 @@ public class HbaseQueries {
 		Put put = new Put(rowKey.getBytes());
 		put.addColumn(columnFamily.getBytes(), qualifier.getBytes(), newValue.getBytes());
 		timer.start();
-        table.put(put);
-        timer.stop();
-        System.out.println("Time elapsed to execute a query, updateValue: " + timer.elapsedMillis() + " milliseconds.");
+        	table.put(put);
+        	timer.stop();
+        	System.out.println("Time elapsed to execute a query, updateValue: " + timer.elapsedMillis() + " milliseconds.");
   		timer.reset();
 		
-  		 Get g = new Get(rowKey.getBytes());
-         Result result = table.get(g);
-         if (!Bytes.toString(result.getValue(columnFamily.getBytes(), qualifier.getBytes())).equals(newValue))
-         {
-        	 throw new UserExceptions("Value is not updated.");
-         }
+  		Get g = new Get(rowKey.getBytes());
+         	Result result = table.get(g);
+         	if (!Bytes.toString(result.getValue(columnFamily.getBytes(), qualifier.getBytes())).equals(newValue))
+         	{
+        		throw new UserExceptions("Value is not updated.");
+         	}
 	}
 }
