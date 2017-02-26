@@ -133,7 +133,7 @@ public class CassandraQueries
 	{
 		System.out.println("\n\n----------Query 6----------");
 		
-		//String queryDropIndexCategories = "DROP INDEX categories_idx;";
+		String queryDropIndexCategories = "DROP INDEX categories_idx;";
 		
 		query = "SELECT name, state, city, review_count FROM businessobjects WHERE categories CONTAINS 'Restaurants';";
 		
@@ -219,9 +219,9 @@ public class CassandraQueries
 		List<String> firstCategory = new ArrayList<String>();
 		String queryCategories = "SELECT categories FROM businessobjects";
 		ResultSet resultCategories = CassandraDBConnect.session.execute(queryCategories);
-        int count = 0;
+                int count = 0;
 		
-        while(resultCategories.iterator().hasNext())
+                while(resultCategories.iterator().hasNext())
 		{
 			categories.add(resultCategories.one().getList(0, String.class));			
 			System.out.println(categories.get(count));
