@@ -12,10 +12,10 @@ import com.datastax.driver.core.Session;
 public class CassandraDBConnect 
 {
 	private static Cluster cluster;
-    static Session session;
+        static Session session;
 	static BufferedReader reader = null;
 	static String line = null;
-    static int count = 0;
+        static int count = 0;
 	
     /**
      * Adds the contact point to the Cluster object using which we connect to the Cassandra.
@@ -69,14 +69,14 @@ public class CassandraDBConnect
 	public static void createTables()
 	{
 		session.execute("CREATE TABLE businessobjects (type text, name text, business_id text PRIMARY KEY, neighborhoods list<text>, open boolean, "
-		+ "full_address text, latitude float, url text, longitude float, stars float, review_count int, photo_url text, city text, state text, "
-	    + "categories list<text>, schools list<text>);");
+				+ "full_address text, latitude float, url text, longitude float, stars float, review_count int, photo_url text, city text, state text, "
+	                        + "categories list<text>, schools list<text>);");
 
-        session.execute("CREATE TABLE reviewobjects (type text, business_id text, date date, funny int, useful int, cool int, user_id text, "
-		+ "review_id text PRIMARY KEY, stars int, text text);");
+                session.execute("CREATE TABLE reviewobjects (type text, business_id text, date date, funny int, useful int, cool int, user_id text, "
+				+ "review_id text PRIMARY KEY, stars int, text text);");
 
-        session.execute("CREATE TABLE userobjects (type text, user_id text PRIMARY KEY, name text, url text, review_count int, average_stars float, "
-	    + "funny int, useful int, cool int);");
+                session.execute("CREATE TABLE userobjects (type text, user_id text PRIMARY KEY, name text, url text, review_count int, average_stars float, "
+				+ "funny int, useful int, cool int);");
 	}
 	
 	/**
@@ -145,7 +145,7 @@ public class CassandraDBConnect
 		connectDB();
 		//createKeyspace("yelpkeys");
 		useKeyspace("yelpkeys");
-        //createTables();
+                //createTables();
 		//readFile();
 		CassandraQueries.viewContentsBusiness();
 		CassandraQueries.totalReviews();
